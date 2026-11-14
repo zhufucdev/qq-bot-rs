@@ -23,6 +23,7 @@ pub trait EventHandler: Send + Sync {
             Event::Resumed => self.on_resumed(bot).await,
             Event::AtMessageCreate(m) => self.on_at_message_create(bot, *m).await,
             Event::GroupAtMessageCreate(m) => self.on_group_at_message_create(bot, *m).await,
+            Event::GroupMessageCreate(m) => self.on_group_message_create(bot, *m).await,
             Event::C2cMessageCreate(m) => self.on_c2c_message_create(bot, *m).await,
             Event::FriendAdd(e) => self.on_friend_add(bot, e).await,
             Event::FriendDel(e) => self.on_friend_del(bot, e).await,
@@ -48,6 +49,9 @@ pub trait EventHandler: Send + Sync {
 
     /// 群 @ 机器人消息。
     async fn on_group_at_message_create(&self, _bot: &Bot, _msg: GroupMessage) {}
+
+    /// 群消息（全量模式）。
+    async fn on_group_message_create(&self, _bot: &Bot, _msg: GroupMessage) {}
 
     /// 私聊（C2C）消息。
     async fn on_c2c_message_create(&self, _bot: &Bot, _msg: C2cMessage) {}

@@ -39,6 +39,9 @@ pub enum Event {
     /// 群 @ 机器人消息（`GROUP_AT_MESSAGE_CREATE`）。
     GroupAtMessageCreate(Box<GroupMessage>),
 
+    /// 群消息（全量模式，`GROUP_MESSAGE_CREATE`）
+    GroupMessageCreate(Box<GroupMessage>),
+
     /// 私聊（C2C）消息（`C2C_MESSAGE_CREATE`）。
     C2cMessageCreate(Box<C2cMessage>),
 
@@ -103,6 +106,9 @@ impl Event {
             }
             "GROUP_AT_MESSAGE_CREATE" => {
                 serde_json::from_value(data).map(|m| Event::GroupAtMessageCreate(Box::new(m)))
+            }
+            "GROUP_MESSAGE_CREATE" => {
+                serde_json::from_value(data).map(|m| Event::GroupMessageCreate(Box::new(m)))
             }
             "C2C_MESSAGE_CREATE" => {
                 serde_json::from_value(data).map(|m| Event::C2cMessageCreate(Box::new(m)))
