@@ -4,6 +4,7 @@ pub mod gateway;
 pub mod interaction;
 pub mod keyboard;
 pub mod manage;
+pub mod member;
 pub mod message;
 pub mod payloads;
 pub mod robot;

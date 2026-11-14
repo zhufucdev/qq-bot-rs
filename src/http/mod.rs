@@ -5,6 +5,7 @@
 
 mod client;
 mod dms;
+mod groups;
 mod interactions;
 mod messages;
 mod meta;

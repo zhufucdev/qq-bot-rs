@@ -16,6 +16,7 @@ categories = ["api-bindings", "asynchronous"]
 test-endpoints = []
 
 [dependencies]
+async-stream = "0.3.6"
 async-trait = "0.1.89"
 base64 = "0.22.1"
 bitflags = { version = "2.11.1", features = ["serde"] }
