@@ -1,6 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::types::user::{Member, User};
+use crate::types::{
+    group::MemberRole,
+    user::{Member, User},
+};
 
 /// 频道消息（`AT_MESSAGE_CREATE` / `MESSAGE_CREATE`）。
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -69,6 +72,14 @@ pub struct GroupMessage {
 pub struct GroupMessageAuthor {
     /// 群成员 openid——同一用户在不同群间不同。
     pub member_openid: String,
+    /// 用户唯一标识（OpenID 格式）
+    pub id: String,
+    pub username: String,
+    pub bot: bool,
+    /// 用户 OpenID（单聊场景使用）
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub user_openid: Option<String>,
+    pub member_role: MemberRole,
 }
 
 /// 用户私聊（C2C）消息。

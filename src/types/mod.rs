@@ -1,6 +1,7 @@
 //! 协议层数据结构——纯 serde DTO，不含业务行为。
 
 pub mod gateway;
+pub mod group;
 pub mod interaction;
 pub mod keyboard;
 pub mod manage;
